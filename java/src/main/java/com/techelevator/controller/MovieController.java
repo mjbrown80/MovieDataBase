@@ -30,12 +30,21 @@ public class MovieController {
         User user = userDao.getUserByUsername(principal.getName());
         return movieDao.getMovies();
     }
+
     @RequestMapping(path ="/movies/{id}", method = RequestMethod.GET)
     public Movie getMovieById(@PathVariable int id, Principal principal){
         User user = userDao.getUserByUsername(principal.getName());
         Movie movie = movieDao.getMovieById(id);
         return movie;
     }
+
+    @RequestMapping(path = "/movies/{title}", method = RequestMethod.GET)
+    public Movie getMovieByTitle(@PathVariable String title, Principal principal){
+        User user = userDao.getUserByUsername(principal.getName());
+        Movie movie = movieDao.getMovieByTitle(title);
+        return movie;
+    }
+
     @PostMapping("/movies")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Movie> add(@Valid @RequestBody Movie newMovie) {
@@ -49,11 +58,7 @@ public class MovieController {
             return new ResponseEntity<>(errorMovie, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-//    @ResponseStatus(HttpStatus.CREATED)
-//    @RequestMapping(path = "/add", method = RequestMethod.POST)
-//    public void add(@Valid @RequestBody Movie newMovie){
-//        try {
-//            movieDao.
-//        }
-//    }
+
+
+
 }
