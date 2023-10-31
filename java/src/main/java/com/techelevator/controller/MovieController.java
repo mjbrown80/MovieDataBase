@@ -4,11 +4,10 @@ import com.techelevator.dao.MovieDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Movie;
 import com.techelevator.model.User;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.List;
 
@@ -27,5 +26,15 @@ public class MovieController {
     public List<Movie> movies(Principal principal){
         User user = userDao.getUserByUsername(principal.getName());
         return movieDao.getMovies();
+    }
+    @RequestMapping(path ="/movies/{id}", method = RequestMethod.GET)
+    public Movie getMovieById(@PathVariable int id, Principal principal){
+        User user = userDao.getUserByUsername(principal.getName());
+        Movie movie = movieDao.getMovieById(id);
+        return movie;
+    }
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    public void add(@Valid @RequestBody MovieDao newMovie){
     }
 }

@@ -10,8 +10,9 @@ public class Movie {
     private String movieGenre;
     private int numberOfDiscs;
     private String movieLocation;
+    private String moviePoster;
 
-    public Movie(int movieId, String movieTitle, Date movieReleaseDate, String movieType, String movieGenre, int numberOfDiscs, String movieLocation) {
+    public Movie(int movieId, String movieTitle, Date movieReleaseDate, String movieType, String movieGenre, int numberOfDiscs, String movieLocation, String moviePoster) {
         this.movieId = movieId;
         this.movieTitle = movieTitle;
         this.movieReleaseDate = movieReleaseDate;
@@ -19,6 +20,7 @@ public class Movie {
         this.movieGenre = movieGenre;
         this.numberOfDiscs = numberOfDiscs;
         this.movieLocation = movieLocation;
+        this.moviePoster = moviePoster;
     }
 
     public Movie() {
@@ -80,16 +82,26 @@ public class Movie {
         this.movieLocation = movieLocation;
     }
 
+    public String getMoviePoster() {
+        return moviePoster;
+    }
+
+    public void setMoviePoster(String moviePoster) {
+        this.moviePoster = moviePoster;
+    }
+
     @Override
     public String toString() {
         return "Movie{" +
                 "movieId=" + movieId +
                 ", movieTitle='" + movieTitle + '\'' +
-                ", movieReleaseDate='" + movieReleaseDate + '\'' +
+                ", movieReleaseDate=" + movieReleaseDate +
                 ", movieType='" + movieType + '\'' +
                 ", movieGenre='" + movieGenre + '\'' +
                 ", numberOfDiscs=" + numberOfDiscs +
                 ", movieLocation='" + movieLocation + '\'' +
+                ", moviePoster='" + moviePoster + '\'' +
                 '}';
     }
 }
+

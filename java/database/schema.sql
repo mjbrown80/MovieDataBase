@@ -19,6 +19,7 @@ CREATE TABLE movies (
     movie_genre varchar(100),
     number_discs INT,
     movie_location varchar(25) NOT NULL,
+    movie_poster varchar(250),
     CONSTRAINT PK_movie PRIMARY KEY (movie_id)
 );
 
