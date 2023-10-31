@@ -2,9 +2,12 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.MovieDao;
 import com.techelevator.dao.UserDao;
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Movie;
 import com.techelevator.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -14,7 +17,7 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class MovieController {
-
+    @Autowired
     private MovieDao movieDao;
     private UserDao userDao;
 
@@ -33,8 +36,24 @@ public class MovieController {
         Movie movie = movieDao.getMovieById(id);
         return movie;
     }
+    @PostMapping("/movies")
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public void add(@Valid @RequestBody MovieDao newMovie){
+    public ResponseEntity<Movie> add(@Valid @RequestBody Movie newMovie) {
+        try {
+            Movie createdMovie = movieDao.createMovie(newMovie);
+            return new ResponseEntity<>(createdMovie, HttpStatus.CREATED);
+        } catch (DaoException e) {
+            Movie errorMovie = new Movie();
+            errorMovie.setMovieTitle("Error");
+            errorMovie.setMovieGenre("Error");
+            return new ResponseEntity<>(errorMovie, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(path = "/add", method = RequestMethod.POST)
+//    public void add(@Valid @RequestBody Movie newMovie){
+//        try {
+//            movieDao.
+//        }
+//    }
 }
