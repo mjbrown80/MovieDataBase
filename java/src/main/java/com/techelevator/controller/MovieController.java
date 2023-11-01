@@ -38,7 +38,7 @@ public class MovieController {
         return movie;
     }
 
-    @RequestMapping(path = "/movies/{title}", method = RequestMethod.GET)
+    @RequestMapping(path = "/movies/title/{title}", method = RequestMethod.GET)
     public Movie getMovieByTitle(@PathVariable String title, Principal principal){
         User user = userDao.getUserByUsername(principal.getName());
         Movie movie = movieDao.getMovieByTitle(title);
