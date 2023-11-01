@@ -45,6 +45,13 @@ public class MovieController {
         return movie;
     }
 
+    @RequestMapping(path = "/movies/genre/{genre}", method = RequestMethod.GET)
+    public Movie getMoviesByGenre(@PathVariable String genre, Principal principal){
+        User user = userDao.getUserByUsername(principal.getName());
+        Movie movie = movieDao.getMovieByGenre(genre);
+        return movie;
+    }
+
     @PostMapping("/movies")
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Movie> add(@Valid @RequestBody Movie newMovie) {

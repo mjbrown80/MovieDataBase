@@ -9,4 +9,5 @@ public interface MovieDao {
     Movie createMovie(Movie movie);
     Movie getMovieById(int id);
     Movie getMovieByTitle(String title);
+    Movie getMovieByGenre(String genre);
 }
