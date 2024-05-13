@@ -5,6 +5,8 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Movie;
 import com.techelevator.model.User;
+import com.techelevator.services.OmdbApiService;
+import com.techelevator.services.RestOmdbApiService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ public class MovieController {
     @Autowired
     private MovieDao movieDao;
     private UserDao userDao;
+    private OmdbApiService omdbApiService;
 
     public MovieController(MovieDao movieDao, UserDao userDao) {
         this.movieDao = movieDao;
@@ -64,6 +67,11 @@ public class MovieController {
             errorMovie.setMovieGenre("Error");
             return new ResponseEntity<>(errorMovie, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @RequestMapping(path="/movieapi", method = RequestMethod.GET)
+    public List<Movie> movieSearch(@RequestParam String query){
+        return omdbApiService.getMoviesByName(query);
     }
 
 
