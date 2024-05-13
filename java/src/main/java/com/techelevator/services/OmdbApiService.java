@@ -1,10 +1,10 @@
 package com.techelevator.services;
 
-import com.techelevator.model.Movie;
+import com.techelevator.model.MovieDto;
 
 import java.util.List;
 
 public interface OmdbApiService {
 
-    List<Movie> getMoviesByName(String searchString);
+    List<MovieDto> getMoviesByName(String searchString);
 }

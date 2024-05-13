@@ -4,6 +4,7 @@ import com.techelevator.dao.MovieDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Movie;
+import com.techelevator.model.MovieDto;
 import com.techelevator.model.User;
 import com.techelevator.services.OmdbApiService;
 import com.techelevator.services.RestOmdbApiService;
@@ -22,11 +23,14 @@ public class MovieController {
     @Autowired
     private MovieDao movieDao;
     private UserDao userDao;
+    @Autowired
     private OmdbApiService omdbApiService;
 
-    public MovieController(MovieDao movieDao, UserDao userDao) {
+    public MovieController(MovieDao movieDao, UserDao userDao, OmdbApiService omdbApiService) {
         this.movieDao = movieDao;
         this.userDao = userDao;
+        this.omdbApiService = omdbApiService;
+
     }
     @RequestMapping(path ="/movies", method = RequestMethod.GET)
     public List<Movie> movies(Principal principal){
@@ -70,7 +74,7 @@ public class MovieController {
     }
 
     @RequestMapping(path="/movieapi", method = RequestMethod.GET)
-    public List<Movie> movieSearch(@RequestParam String query){
+    public List<MovieDto> movieSearch(@RequestParam String query){
         return omdbApiService.getMoviesByName(query);
     }
 
