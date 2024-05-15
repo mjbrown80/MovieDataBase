@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Movie {
     private int movieId;
+    private String imdbId;
     private String movieTitle;
     private Date movieReleaseDate;
     private String movieType;
@@ -12,8 +13,9 @@ public class Movie {
     private String movieLocation;
     private String moviePoster;
 
-    public Movie(int movieId, String movieTitle, Date movieReleaseDate, String movieType, String movieGenre, int numberOfDiscs, String movieLocation, String moviePoster) {
+    public Movie(int movieId, String imdbId, String movieTitle, Date movieReleaseDate, String movieType, String movieGenre, int numberOfDiscs, String movieLocation, String moviePoster) {
         this.movieId = movieId;
+        this.imdbId = imdbId;
         this.movieTitle = movieTitle;
         this.movieReleaseDate = movieReleaseDate;
         this.movieType = movieType;
@@ -32,6 +34,14 @@ public class Movie {
 
     public void setMovieId(int movieId) {
         this.movieId = movieId;
+    }
+
+    public String getImdbId() {
+        return imdbId;
+    }
+
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
     }
 
     public String getMovieTitle() {
