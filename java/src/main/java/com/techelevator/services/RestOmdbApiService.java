@@ -43,7 +43,7 @@ public class RestOmdbApiService implements OmdbApiService{
             for (int i = 0; i < root.size(); i++){
                 String title =  root.path(i).path("Title").asText();
                 int year = root.path(i).path("Year").asInt();
-                int imdbId = root.path(i).path("imdbID").asInt();
+                String imdbId = root.path(i).path("imdbID").asText();
                 String poster = root.path(i).path("Poster").asText();
 
                 MovieDto movieDto = new MovieDto(title, year, imdbId, poster);

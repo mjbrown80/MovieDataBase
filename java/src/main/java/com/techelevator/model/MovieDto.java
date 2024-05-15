@@ -3,10 +3,10 @@ package com.techelevator.model;
 public class MovieDto {
     private String title;
     private int year;
-    private int imdbId;
+    private String imdbId;
     private String poster;
 
-    public MovieDto(String title, int year, int imdbId, String poster) {
+    public MovieDto(String title, int year, String imdbId, String poster) {
         this.title = title;
         this.year = year;
         this.imdbId = imdbId;
@@ -29,11 +29,11 @@ public class MovieDto {
         this.year = year;
     }
 
-    public int getImdbId() {
+    public String getImdbId() {
         return imdbId;
     }
 
-    public void setImdbId(int imdbId) {
+    public void setImdbId(String imdbId) {
         this.imdbId = imdbId;
     }
 
