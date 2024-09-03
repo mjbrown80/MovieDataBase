@@ -1,6 +1,6 @@
 <template>
   <div id="register" class="text-center">
-    <form @submit.prevent="register">
+    <form v-on:submit.prevent="register">
       <h1>Create Account</h1>
       <div role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -18,7 +18,7 @@
         <input type="password" id="confirmPassword" v-model="user.confirmPassword" required />
       </div>
       <button type="submit">Create Account</button>
-      <p><router-link :to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
+      <p><router-link v-bind:to="{ name: 'login' }">Already have an account? Log in.</router-link></p>
     </form>
   </div>
 </template>
@@ -27,7 +27,6 @@
 import authService from '../services/AuthService';
 
 export default {
-  name: 'register',
   data() {
     return {
       user: {

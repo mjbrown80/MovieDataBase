@@ -22,7 +22,7 @@ CREATE TABLE movies (
     movie_location varchar(25) NOT NULL,
     movie_poster varchar(250),
     imdb_id varchar(25),
-    CONSTRAINT PK_movie PRIMARY KEY (movie_id)
+    CONSTRAINT PK_movie PRIMARY KEY (movie_id),
     CONSTRAINT unique_movie_title_release_date UNIQUE (movie_title, movie_release_date)
 );
 

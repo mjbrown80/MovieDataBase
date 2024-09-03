@@ -1,6 +1,6 @@
 <template>
   <div id="login">
-    <form @submit.prevent="login">
+    <form v-on:submit.prevent="login">
       <h1 >Please Sign In</h1>
       <div role="alert" v-if="invalidCredentials">
         Invalid username and password!
@@ -18,7 +18,7 @@
       </div>
       <button type="submit">Sign in</button>
       <p>
-      <router-link :to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
+      <router-link v-bind:to="{ name: 'register' }">Need an account? Sign up.</router-link></p>
     </form>
   </div>
 </template>
@@ -27,7 +27,6 @@
 import authService from "../services/AuthService";
 
 export default {
-  name: "login",
   components: {},
   data() {
     return {
