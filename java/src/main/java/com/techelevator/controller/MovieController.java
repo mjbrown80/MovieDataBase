@@ -20,7 +20,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@PreAuthorize("isAuthenticated")
+//@PreAuthorize("isAuthenticated()")
 public class MovieController {
     @Autowired
     private MovieDao movieDao;
@@ -77,6 +77,7 @@ public class MovieController {
 
     @RequestMapping(path="/movieapi", method = RequestMethod.GET)
     public List<MovieDto> movieSearch(@RequestParam String query){
+
         return omdbApiService.getMoviesByName(query);
     }
 

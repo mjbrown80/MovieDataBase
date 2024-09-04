@@ -1,6 +1,6 @@
 <template>
     <div>
-         <MyMovies></MyMovies>
+         <my-movies/>
     </div>
  
 
@@ -8,8 +8,13 @@
 
 <script>
 import MyMovies from '../components/MyMovies.vue';
+
 export default {
-components : MyMovies,
+  components: {
+     MyMovies ,
+     
+    },
+
 }
 </script>
 
